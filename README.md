@@ -8,13 +8,16 @@ Una calculadora científica completa desarrollada en Python con interfaz gráfic
 - ✅ Funciones científicas: sin, cos, tan, √, x², log
 - ✅ Sistema de memoria: MC, MR, M+, M-
 - ✅ Interfaz gráfica intuitiva
-- ✅ Manejo de errores robusto
-- ✅ Suite completa de tests unitarios (74 tests, 91% cobertura)
+- ✅ **Parser matemático seguro** (sympy) - sin riesgos de eval()
+- ✅ Manejo de errores robusto con mensajes específicos
+- ✅ Suite completa de tests unitarios (120 tests, 90% cobertura)
+- ✅ Validación de expresiones antes de evaluar
 
 ## 📋 Requisitos
 
 - Python 3.8 o superior
 - Tkinter (incluido en la mayoría de instalaciones de Python)
+- sympy >= 1.12 (parser matemático seguro)
 
 ## 🔧 Instalación
 
@@ -78,12 +81,15 @@ start htmlcov/index.html  # Windows
 
 ### Estadísticas de tests
 
-- **Total de tests**: 74
-- **Cobertura**: 91.18% para calculadora.py
+- **Total de tests**: 120 ✅
+- **Cobertura**:
+  - calculadora.py: 84.10%
+  - math_parser.py: 90.53%
 - **Tests por categoría**:
   - Operaciones básicas: 22 tests
   - Funciones científicas: 27 tests
   - Sistema de memoria: 25 tests
+  - **Parser matemático**: 46 tests (seguridad, validación, funciones)
 
 Para más información sobre los tests, consulta [tests/README.md](tests/README.md).
 
@@ -93,10 +99,12 @@ Para más información sobre los tests, consulta [tests/README.md](tests/README.
 proyecto/
 ├── calculadora.py              # Calculadora con GUI (Tkinter)
 ├── calculadora_consola.py      # Versión de consola
+├── math_parser.py              # 🆕 Parser matemático seguro (sympy)
 ├── tests/                      # Suite de tests
 │   ├── test_operaciones_basicas.py
 │   ├── test_funciones_cientificas.py
 │   ├── test_memoria.py
+│   ├── test_math_parser.py     # 🆕 Tests del parser (46 tests)
 │   └── README.md
 ├── requirements.txt            # Dependencias del proyecto
 ├── pytest.ini                  # Configuración de pytest
@@ -104,7 +112,10 @@ proyecto/
 ├── .gitignore                  # Archivos ignorados por git
 ├── CALCULADORA_README.md       # Documentación detallada
 ├── INSTALACION_TKINTER.md      # Guía de instalación de Tkinter
+├── REFACTORIZACION_EVAL.md     # 🆕 Documentación refactorización eval()
 ├── GESTION_PROYECTO.md         # Guía de gestión del proyecto
+├── ROADMAP_DEFINITIVO.md       # Roadmap completo
+├── REORGANIZACION_MILESTONES.md # Cambios en estructura
 └── README.md                   # Este archivo
 ```
 
@@ -112,7 +123,8 @@ proyecto/
 
 - [CALCULADORA_README.md](CALCULADORA_README.md) - Documentación completa de uso
 - [INSTALACION_TKINTER.md](INSTALACION_TKINTER.md) - Guía de instalación de Tkinter
-- [ROADMAP_DEFINITIVO.md](ROADMAP_DEFINITIVO.md) - 🆕 Roadmap completo y detallado
+- [REFACTORIZACION_EVAL.md](REFACTORIZACION_EVAL.md) - 🆕 Refactorización eval() → parser seguro
+- [ROADMAP_DEFINITIVO.md](ROADMAP_DEFINITIVO.md) - Roadmap completo y detallado
 - [REORGANIZACION_MILESTONES.md](REORGANIZACION_MILESTONES.md) - Cambios en la estructura
 - [GESTION_PROYECTO.md](GESTION_PROYECTO.md) - Gestión del proyecto
 - [tests/README.md](tests/README.md) - Documentación de tests
@@ -121,11 +133,11 @@ proyecto/
 
 El proyecto ha sido reorganizado para consolidar funcionalidades relacionadas:
 
-### v1.1 - Fundamentos Técnicos ✅ (En progreso - 25%)
+### v1.1 - Fundamentos Técnicos ✅ (En progreso - 50%)
 **Objetivo**: Base técnica sólida + Calculadora profesional completa
 
-- [x] #4 Tests unitarios (COMPLETADO)
-- [ ] #3 Refactorizar eval() con parser seguro
+- [x] #4 Tests unitarios (COMPLETADO ✅)
+- [x] #3 Refactorizar eval() con parser seguro (COMPLETADO ✅)
 - [ ] #8 Implementar arquitectura MVC
 - [ ] 🆕 #13 Modos de operación avanzados y exportación
   - 5 modos: Básico, Ampliado, Científico, Programación, Gráfico
