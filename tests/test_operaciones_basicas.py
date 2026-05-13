@@ -78,7 +78,8 @@ class TestOperacionesBasicas:
         """Test división básica"""
         calc.expresion = "10/2"
         calc.calcular()
-        assert calc.expresion == "5.0"
+        # Con el nuevo parser, 10/2 = 5 (entero) no 5.0
+        assert calc.expresion == "5"
     
     def test_division_con_decimales(self, calc):
         """Test división con resultado decimal"""

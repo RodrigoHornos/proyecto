@@ -1,5 +1,6 @@
 # Dependencias principales
 tkinter-tooltip>=1.0.0
+sympy>=1.12
 
 # Dependencias de testing
 pytest>=7.4.0

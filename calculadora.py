@@ -8,6 +8,7 @@ Incluye operaciones básicas, funciones científicas y sistema de memoria
 import tkinter as tk
 from tkinter import ttk
 import math
+from math_parser import safe_eval
 
 class Calculadora:
     def __init__(self, root):
@@ -179,33 +180,56 @@ class Calculadora:
         """Cambia el signo del número actual"""
         try:
             if self.expresion:
-                # Si hay una expresión, evaluar y cambiar signo
-                valor = eval(self.expresion)
-                self.expresion = str(-valor)
+                # Si hay una expresión, evaluar y cambiar signo usando parser seguro
+                valor = safe_eval(self.expresion)
+                resultado = -valor
+                # Formatear resultado: si es entero, mostrar sin decimales
+                if resultado == int(resultado):
+                    self.expresion = str(int(resultado))
+                else:
+                    self.expresion = str(resultado)
                 self.entrada_texto.set(self.expresion)
-        except:
+        except ValueError as e:
             self.entrada_texto.set("Error")
+            self.expresion = ""
+        except Exception:
+            self.entrada_texto.set("Error")
+            self.expresion = ""
     
     def calcular(self):
-        """Calcula el resultado de la expresión"""
+        """Calcula el resultado de la expresión usando parser seguro"""
         try:
             if self.expresion:
-                resultado = eval(self.expresion)
+                # Usar parser seguro en lugar de eval()
+                resultado = safe_eval(self.expresion)
                 self.resultado_anterior = resultado
-                self.entrada_texto.set(str(resultado))
-                self.expresion = str(resultado)
+                # Formatear resultado: si es entero, mostrar sin decimales
+                if resultado == int(resultado):
+                    self.entrada_texto.set(str(int(resultado)))
+                    self.expresion = str(int(resultado))
+                else:
+                    self.entrada_texto.set(str(resultado))
+                    self.expresion = str(resultado)
         except ZeroDivisionError:
             self.entrada_texto.set("Error: Div/0")
+            self.expresion = ""
+        except ValueError as e:
+            # Errores de sintaxis o expresiones inválidas
+            self.entrada_texto.set("Error")
+            self.expresion = ""
+        except OverflowError:
+            self.entrada_texto.set("Error: Overflow")
             self.expresion = ""
         except Exception as e:
             self.entrada_texto.set("Error")
             self.expresion = ""
     
     def funcion_cientifica(self, funcion):
-        """Aplica una función científica al valor actual"""
+        """Aplica una función científica al valor actual usando parser seguro"""
         try:
             if self.expresion:
-                valor = float(eval(self.expresion))
+                # Usar parser seguro en lugar de eval()
+                valor = float(safe_eval(self.expresion))
                 resultado = 0  # Inicializar resultado
                 
                 if funcion == 'sin':
@@ -236,23 +260,29 @@ class Calculadora:
             self.expresion = ""
     
     def memoria_sumar(self):
-        """Suma el valor actual a la memoria"""
+        """Suma el valor actual a la memoria usando parser seguro"""
         try:
             if self.expresion:
-                valor = float(eval(self.expresion))
+                # Usar parser seguro en lugar de eval()
+                valor = float(safe_eval(self.expresion))
                 self.memoria += valor
                 self.entrada_texto.set(f"M+ ({self.memoria})")
-        except:
+        except ValueError:
+            self.entrada_texto.set("Error")
+        except Exception:
             self.entrada_texto.set("Error")
     
     def memoria_restar(self):
-        """Resta el valor actual de la memoria"""
+        """Resta el valor actual de la memoria usando parser seguro"""
         try:
             if self.expresion:
-                valor = float(eval(self.expresion))
+                # Usar parser seguro en lugar de eval()
+                valor = float(safe_eval(self.expresion))
                 self.memoria -= valor
                 self.entrada_texto.set(f"M- ({self.memoria})")
-        except:
+        except ValueError:
+            self.entrada_texto.set("Error")
+        except Exception:
             self.entrada_texto.set("Error")
     
     def memoria_recuperar(self):
