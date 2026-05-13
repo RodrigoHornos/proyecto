@@ -9,9 +9,11 @@ Una calculadora científica completa desarrollada en Python con interfaz gráfic
 - ✅ Sistema de memoria: MC, MR, M+, M-
 - ✅ Interfaz gráfica intuitiva
 - ✅ **Parser matemático seguro** (sympy) - sin riesgos de eval()
+- ✅ **Arquitectura MVC** - separación clara de responsabilidades
 - ✅ Manejo de errores robusto con mensajes específicos
-- ✅ Suite completa de tests unitarios (120 tests, 90% cobertura)
+- ✅ Suite completa de tests unitarios (152 tests, 91% cobertura)
 - ✅ Validación de expresiones antes de evaluar
+- ✅ Código modular y extensible
 
 ## 📋 Requisitos
 
@@ -43,11 +45,21 @@ pip install -r requirements.txt
 
 ## 🎮 Uso
 
-### Versión con GUI
+### Versión MVC (Recomendada)
+
+```bash
+python3 calculadora_mvc.py
+```
+
+Esta versión utiliza arquitectura MVC con separación clara de responsabilidades.
+
+### Versión Original
 
 ```bash
 python3 calculadora.py
 ```
+
+Versión monolítica mantenida para compatibilidad.
 
 ### Versión de consola
 
@@ -81,15 +93,19 @@ start htmlcov/index.html  # Windows
 
 ### Estadísticas de tests
 
-- **Total de tests**: 120 ✅
-- **Cobertura**:
+- **Total de tests**: 152 ✅
+- **Cobertura global**: 91%
+- **Cobertura por módulo**:
   - calculadora.py: 84.10%
   - math_parser.py: 90.53%
+  - calculator_model.py: 77.24%
+  - memory_model.py: 100.00%
 - **Tests por categoría**:
   - Operaciones básicas: 22 tests
   - Funciones científicas: 27 tests
   - Sistema de memoria: 25 tests
-  - **Parser matemático**: 46 tests (seguridad, validación, funciones)
+  - Parser matemático: 46 tests
+  - **Modelos MVC**: 32 tests (nuevos)
 
 Para más información sobre los tests, consulta [tests/README.md](tests/README.md).
 
@@ -97,14 +113,26 @@ Para más información sobre los tests, consulta [tests/README.md](tests/README.
 
 ```
 proyecto/
-├── calculadora.py              # Calculadora con GUI (Tkinter)
+├── models/                     # 🆕 Modelos MVC (Lógica de negocio)
+│   ├── __init__.py
+│   ├── calculator_model.py    # Modelo de calculadora
+│   └── memory_model.py        # Modelo de memoria
+├── views/                      # 🆕 Vistas MVC (Interfaz gráfica)
+│   ├── __init__.py
+│   └── calculator_view.py     # Vista Tkinter
+├── controllers/                # 🆕 Controladores MVC (Coordinación)
+│   ├── __init__.py
+│   └── calculator_controller.py
+├── calculadora_mvc.py          # 🆕 Punto de entrada MVC (recomendado)
+├── calculadora.py              # Calculadora original (compatibilidad)
 ├── calculadora_consola.py      # Versión de consola
-├── math_parser.py              # 🆕 Parser matemático seguro (sympy)
+├── math_parser.py              # Parser matemático seguro (sympy)
 ├── tests/                      # Suite de tests
 │   ├── test_operaciones_basicas.py
 │   ├── test_funciones_cientificas.py
 │   ├── test_memoria.py
-│   ├── test_math_parser.py     # 🆕 Tests del parser (46 tests)
+│   ├── test_math_parser.py
+│   ├── test_mvc_models.py     # 🆕 Tests de modelos MVC (32 tests)
 │   └── README.md
 ├── requirements.txt            # Dependencias del proyecto
 ├── pytest.ini                  # Configuración de pytest
@@ -112,7 +140,8 @@ proyecto/
 ├── .gitignore                  # Archivos ignorados por git
 ├── CALCULADORA_README.md       # Documentación detallada
 ├── INSTALACION_TKINTER.md      # Guía de instalación de Tkinter
-├── REFACTORIZACION_EVAL.md     # 🆕 Documentación refactorización eval()
+├── REFACTORIZACION_EVAL.md     # Documentación refactorización eval()
+├── ARQUITECTURA_MVC.md         # 🆕 Documentación arquitectura MVC
 ├── GESTION_PROYECTO.md         # Guía de gestión del proyecto
 ├── ROADMAP_DEFINITIVO.md       # Roadmap completo
 ├── REORGANIZACION_MILESTONES.md # Cambios en estructura
@@ -123,22 +152,41 @@ proyecto/
 
 - [CALCULADORA_README.md](CALCULADORA_README.md) - Documentación completa de uso
 - [INSTALACION_TKINTER.md](INSTALACION_TKINTER.md) - Guía de instalación de Tkinter
-- [REFACTORIZACION_EVAL.md](REFACTORIZACION_EVAL.md) - 🆕 Refactorización eval() → parser seguro
+- [REFACTORIZACION_EVAL.md](REFACTORIZACION_EVAL.md) - Refactorización eval() → parser seguro
+- [ARQUITECTURA_MVC.md](ARQUITECTURA_MVC.md) - 🆕 Arquitectura MVC completa
 - [ROADMAP_DEFINITIVO.md](ROADMAP_DEFINITIVO.md) - Roadmap completo y detallado
 - [REORGANIZACION_MILESTONES.md](REORGANIZACION_MILESTONES.md) - Cambios en la estructura
 - [GESTION_PROYECTO.md](GESTION_PROYECTO.md) - Gestión del proyecto
 - [tests/README.md](tests/README.md) - Documentación de tests
 
+## 🏗️ Arquitectura
+
+El proyecto utiliza **arquitectura MVC (Model-View-Controller)** para separar responsabilidades:
+
+- **Modelos** (`models/`): Lógica de negocio pura, sin dependencias de UI
+- **Vistas** (`views/`): Interfaz gráfica Tkinter, sin lógica de negocio
+- **Controladores** (`controllers/`): Coordinación entre modelos y vistas
+
+### Beneficios de MVC
+
+- ✅ **Testabilidad**: Modelos testeables sin UI (152 tests, 91% cobertura)
+- ✅ **Mantenibilidad**: Código organizado y fácil de modificar
+- ✅ **Extensibilidad**: Fácil añadir nuevas funcionalidades
+- ✅ **Reutilización**: Lógica independiente de la interfaz
+- ✅ **Separación clara**: Cada componente tiene una responsabilidad única
+
+Para más detalles, consulta [ARQUITECTURA_MVC.md](ARQUITECTURA_MVC.md).
+
 ## 🗺️ Roadmap (Actualizado)
 
 El proyecto ha sido reorganizado para consolidar funcionalidades relacionadas:
 
-### v1.1 - Fundamentos Técnicos ✅ (En progreso - 50%)
+### v1.1 - Fundamentos Técnicos ✅ (En progreso - 75%)
 **Objetivo**: Base técnica sólida + Calculadora profesional completa
 
 - [x] #4 Tests unitarios (COMPLETADO ✅)
 - [x] #3 Refactorizar eval() con parser seguro (COMPLETADO ✅)
-- [ ] #8 Implementar arquitectura MVC
+- [x] #8 Implementar arquitectura MVC (COMPLETADO ✅)
 - [ ] 🆕 #13 Modos de operación avanzados y exportación
   - 5 modos: Básico, Ampliado, Científico, Programación, Gráfico
   - Exportación a PDF y Excel
