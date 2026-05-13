@@ -1,0 +1,33 @@
+[run]
+# Archivos a incluir en el análisis de cobertura
+source = .
+
+# Archivos a omitir
+omit = 
+    tests/*
+    */__pycache__/*
+    */venv/*
+    */env/*
+    setup.py
+    */site-packages/*
+
+[report]
+# Precisión de los porcentajes
+precision = 2
+
+# Mostrar líneas faltantes
+show_missing = True
+
+# Excluir líneas con estos patrones
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    raise AssertionError
+    raise NotImplementedError
+    if __name__ == .__main__.:
+    if TYPE_CHECKING:
+    @abstractmethod
+
+[html]
+# Directorio para el reporte HTML
+directory = htmlcov
