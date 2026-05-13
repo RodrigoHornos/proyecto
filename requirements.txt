@@ -27,4 +27,5 @@ sympy==1.14.0
 tkinter-tooltip==3.1.2
 typing_extensions==4.15.0
 numpy==2.4.4
+openpyxl==3.1.2
 sympy==1.14.0

@@ -6,7 +6,8 @@ Coordina la interacción entre modelos y vistas
 """
 
 from .calculator_controller import CalculatorController
+from .advanced_calculator_controller import AdvancedCalculatorController
 
-__all__ = ['CalculatorController']
+__all__ = ['CalculatorController', 'AdvancedCalculatorController']
 
 # Made with Bob

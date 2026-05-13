@@ -6,7 +6,8 @@ Contiene todos los componentes de la interfaz gráfica
 """
 
 from .calculator_view import CalculatorView
+from .advanced_calculator_view import AdvancedCalculatorView
 
-__all__ = ['CalculatorView']
+__all__ = ['CalculatorView', 'AdvancedCalculatorView']
 
 # Made with Bob
