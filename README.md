@@ -112,32 +112,64 @@ proyecto/
 
 - [CALCULADORA_README.md](CALCULADORA_README.md) - Documentación completa de uso
 - [INSTALACION_TKINTER.md](INSTALACION_TKINTER.md) - Guía de instalación de Tkinter
-- [GESTION_PROYECTO.md](GESTION_PROYECTO.md) - Gestión y roadmap del proyecto
+- [ROADMAP_DEFINITIVO.md](ROADMAP_DEFINITIVO.md) - 🆕 Roadmap completo y detallado
+- [REORGANIZACION_MILESTONES.md](REORGANIZACION_MILESTONES.md) - Cambios en la estructura
+- [GESTION_PROYECTO.md](GESTION_PROYECTO.md) - Gestión del proyecto
 - [tests/README.md](tests/README.md) - Documentación de tests
 
-## 🗺️ Roadmap
+## 🗺️ Roadmap (Actualizado)
 
-El proyecto sigue un roadmap estructurado en milestones:
+El proyecto ha sido reorganizado para consolidar funcionalidades relacionadas:
 
-### v1.1 - Fundamentos ✅ (En progreso)
-- [x] Tests unitarios completos
-- [ ] Refactorizar eval() con parser seguro
-- [ ] Implementar arquitectura MVC
-- [ ] Crear versión portable
+### v1.1 - Fundamentos Técnicos ✅ (En progreso - 25%)
+**Objetivo**: Base técnica sólida + Calculadora profesional completa
 
-### v1.2 - UX Mejorada
-- [ ] Atajos de teclado
-- [ ] Historial de operaciones
-- [ ] Configuración persistente
+- [x] #4 Tests unitarios (COMPLETADO)
+- [ ] #3 Refactorizar eval() con parser seguro
+- [ ] #8 Implementar arquitectura MVC
+- [ ] 🆕 #13 Modos de operación avanzados y exportación
+  - 5 modos: Básico, Ampliado, Científico, Programación, Gráfico
+  - Exportación a PDF y Excel
+  - Historial avanzado con timestamps
+  - Atajos de teclado integrados
+  - Sistema de temas
+  - Configuración persistente
 
-### v1.3 - Funcionalidades
-- [ ] Funciones científicas avanzadas
-- [ ] Sistema de temas de color
+**Duración estimada**: 9-11 semanas
 
-### v2.0 - Web
-- [ ] Versión web multiplataforma
+### v1.4 - Distribución Profesional
+**Objetivo**: Aplicación lista para distribución
 
-Para más detalles, consulta las [issues del proyecto](https://github.com/RodrigoHornos/proyecto/issues).
+- [ ] #5 Versión portable (Windows, macOS, Linux)
+  - Builds automáticos con CI/CD
+  - Releases en GitHub
+
+**Duración estimada**: 2-3 semanas
+
+### v2.0 - Plataforma Web
+**Objetivo**: Alcance multiplataforma
+
+- [ ] #9 Versión web
+  - Frontend React/Vue
+  - Backend FastAPI
+  - PWA con capacidad offline
+
+**Duración estimada**: 4-6 semanas
+
+### 📋 Cambios Importantes
+
+**Issues consolidadas en #13**:
+- ~~#1 Atajos de teclado~~ → Integrado en #13
+- ~~#2 Historial~~ → Integrado en #13
+- ~~#6 Temas de color~~ → Integrado en #13
+- ~~#7 Funciones científicas~~ → Integrado en #13
+- ~~#10 Configuración persistente~~ → Integrado en #13
+
+**Justificación**: Estas funcionalidades están intrínsecamente relacionadas con los modos de operación y deben implementarse de forma coherente para ofrecer una experiencia profesional desde v1.1.
+
+Para más detalles, consulta:
+- [ROADMAP_DEFINITIVO.md](ROADMAP_DEFINITIVO.md) - Roadmap completo
+- [Issues del proyecto](https://github.com/RodrigoHornos/proyecto/issues)
 
 ## 🤝 Contribuir
 
