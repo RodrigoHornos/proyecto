@@ -11,7 +11,7 @@ Una calculadora científica completa desarrollada en Python con interfaz gráfic
 - ✅ **Parser matemático seguro** (sympy) - sin riesgos de eval()
 - ✅ **Arquitectura MVC** - separación clara de responsabilidades
 - ✅ Manejo de errores robusto con mensajes específicos
-- ✅ Suite completa de tests unitarios (152 tests, 91% cobertura)
+- ✅ Suite completa de tests unitarios (535 tests, 74.87% cobertura)
 - ✅ Validación de expresiones antes de evaluar
 - ✅ Código modular y extensible
 
@@ -93,19 +93,37 @@ start htmlcov/index.html  # Windows
 
 ### Estadísticas de tests
 
-- **Total de tests**: 152 ✅
-- **Cobertura global**: 91%
+- **Total de tests**: 535 ✅
+- **Cobertura global**: 74.87%
 - **Cobertura por módulo**:
   - calculadora.py: 84.10%
   - math_parser.py: 90.53%
   - calculator_model.py: 77.24%
   - memory_model.py: 100.00%
+  - history_model.py: 93.66%
+  - keyboard_model.py: 94.39%
+  - theme_model.py: 89.66%
+  - mode_model.py: 100.00%
+  - scientific_model.py: 93.27%
+  - pdf_exporter.py: 98.24%
+  - excel_exporter.py: 99.56%
+  - programmer_model.py: 96.43%
+  - graphing_model.py: 84.36%
 - **Tests por categoría**:
   - Operaciones básicas: 22 tests
   - Funciones científicas: 27 tests
   - Sistema de memoria: 25 tests
   - Parser matemático: 46 tests
-  - **Modelos MVC**: 32 tests (nuevos)
+  - Modelos MVC: 32 tests
+  - Sistema de historial: 34 tests
+  - Atajos de teclado: 37 tests
+  - Sistema de temas: 32 tests
+  - Modos de operación: 40 tests
+  - Modo científico: 69 tests
+  - Exportación PDF: 19 tests
+  - Exportación Excel: 32 tests
+  - Modo programación: 61 tests
+  - Modo gráfico: 59 tests
 
 Para más información sobre los tests, consulta [tests/README.md](tests/README.md).
 
@@ -181,21 +199,21 @@ Para más detalles, consulta [ARQUITECTURA_MVC.md](ARQUITECTURA_MVC.md).
 
 El proyecto ha sido reorganizado para consolidar funcionalidades relacionadas:
 
-### v1.1 - Fundamentos Técnicos ✅ (En progreso - 75%)
+### v1.1 - Fundamentos Técnicos ✅ (COMPLETADO - 100%)
 **Objetivo**: Base técnica sólida + Calculadora profesional completa
 
 - [x] #4 Tests unitarios (COMPLETADO ✅)
 - [x] #3 Refactorizar eval() con parser seguro (COMPLETADO ✅)
 - [x] #8 Implementar arquitectura MVC (COMPLETADO ✅)
-- [ ] 🆕 #13 Modos de operación avanzados y exportación
-  - 5 modos: Básico, Ampliado, Científico, Programación, Gráfico
-  - Exportación a PDF y Excel
-  - Historial avanzado con timestamps
-  - Atajos de teclado integrados
-  - Sistema de temas
-  - Configuración persistente
+- [x] #13 Modos de operación avanzados y exportación (COMPLETADO ✅)
+  - ✅ 5 modos: Básico, Ampliado, Científico, Programación, Gráfico
+  - ✅ Exportación a PDF y Excel
+  - ✅ Historial avanzado con timestamps
+  - ✅ Atajos de teclado integrados
+  - ✅ Sistema de temas (6 temas disponibles)
+  - ✅ Configuración persistente
 
-**Duración estimada**: 9-11 semanas
+**Estado**: Milestone completado con 535 tests y 74.87% de cobertura
 
 ### v1.4 - Distribución Profesional
 **Objetivo**: Aplicación lista para distribución

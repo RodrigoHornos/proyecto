@@ -9,6 +9,7 @@ from .calculator_model import CalculatorModel
 from .memory_model import MemoryModel
 from .history_model import HistoryModel, HistoryEntry
 from .keyboard_model import KeyboardModel, KeyAction
+from .config_model import ConfigModel, Theme
 
 __all__ = [
     'CalculatorModel',
@@ -16,7 +17,9 @@ __all__ = [
     'HistoryModel',
     'HistoryEntry',
     'KeyboardModel',
-    'KeyAction'
+    'KeyAction',
+    'ConfigModel',
+    'Theme'
 ]
 
 # Made with Bob
